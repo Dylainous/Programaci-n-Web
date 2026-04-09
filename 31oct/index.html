@@ -1,0 +1,101 @@
+<!doctype html> 
+<html>
+<head>
+<meta charset="utf-8">
+<title>Formulario Veterinaria</title>
+<link href="estilos/estilos.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h3 align="center">Formulario ingreso mascota</h3>
+<div class="contenedor">
+
+  <form id="form1" name="form1" method="post" action="server/datos.php">
+
+    <fieldset>
+      <legend>Datos de la Mascota</legend>
+
+      <p>
+        <label for="nombreMascota">Nombre de la mascota:</label>
+        <input type="text" name="nombreMascota" id="nombreMascota" required minlength="2" 
+	    pattern="^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]{2,40}$" placeholder="Ej: Firulais">
+      </p>
+
+      <p>
+        <label for="especie">Especie:</label>
+        <select name="especie" id="especie" required>
+          <option value="">Seleccione la especie...</option>
+          <option value="Perro">Perro</option>
+          <option value="Gato">Gato</option>
+          <option value="Ave">Ave</option>
+          <option value="Conejo">Conejo</option>
+          <option value="Otro">Otro</option>
+        </select>
+      </p>
+
+      <p>
+        <label for="raza">Raza:</label>
+        <input type="text" name="raza" id="raza" required placeholder="Ej: Labrador" pattern="^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]{2,40}$">
+      </p>
+
+      <p>
+        <label for="edad">Edad (años):</label>
+        <input type="number" name="edad" id="edad" min="0" max="30" required placeholder="Ej: 2">
+      </p>
+
+      <p>
+        <label for="sexo">Sexo:</label>
+        <select name="sexo" id="sexo" required>
+          <option value="">Seleccione el sexo...</option>
+          <option value="Macho">Macho</option>
+          <option value="Hembra">Hembra</option>
+        </select>
+      </p>
+    </fieldset>
+
+    <fieldset>
+      <legend>Datos del Propietario</legend>
+
+      <p>
+        <label for="nombreDuenio">Nombre del dueño:</label>
+        <input type="text" name="nombreDuenio" id="nombreDuenio" required minlength="2"
+        placeholder="Ej: Juan Pérez" pattern="^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]{2,40}$">
+      </p>
+
+      <p>
+        <label for="telefono">Teléfono:</label>
+        <input type="tel" name="telefono" id="telefono" required pattern="^[0-9]{9,10}$"
+        placeholder="Ej: 0998765432">
+      </p>
+
+      <p>
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email" required placeholder="correo@ejemplo.com">
+      </p>
+    </fieldset>
+
+    <fieldset>
+      <legend>Información adicional</legend>
+
+      <p>
+        <label for="fechaIngreso">Fecha de ingreso:</label>
+        <input type="date" name="fechaIngreso" id="fechaIngreso" required placeholder="Seleccione la fecha" min="1999-01-01" max="2025-11-30">
+      </p>
+
+      <p>
+        <label for="motivo">Motivo de consulta:</label>
+        <textarea name="motivo" id="motivo" rows="3" required
+        placeholder="Describa brevemente el motivo de la visita"></textarea>
+      </p>
+    </fieldset>
+
+    <p>
+      <input type="submit" name="submit" id="submit" value="Enviar">
+      <input type="reset" name="reset" id="reset" value="Restablecer">
+    </p>
+    
+  </form>
+</div>
+
+</body>
+</html>
