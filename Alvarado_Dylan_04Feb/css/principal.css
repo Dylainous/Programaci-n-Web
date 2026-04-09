@@ -1,0 +1,54 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f2f6ff;
+}
+
+/* CABECERA */
+.cabecera {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #1e90ff;
+    color: white;
+    padding: 10px 20px;
+}
+
+.logo img {
+    height: 50px;
+}
+
+.usuario {
+    text-align: right;
+}
+
+/* MENÚ */
+.menu {
+    background: #003366;
+    padding: 10px;
+    text-align: center;
+}
+
+.menu button {
+    background: #1e90ff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 10px;
+    cursor: pointer;
+}
+
+.menu button:hover {
+    background: #005cbf;
+}
+
+/* CONTENIDO */
+.contenido, .datos {
+    padding: 20px;
+    background: white;
+    margin: 20px;
+    border-radius: 8px;
+}

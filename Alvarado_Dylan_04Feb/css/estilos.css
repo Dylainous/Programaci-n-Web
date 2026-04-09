@@ -1,0 +1,60 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #1e90ff, #ffffff);
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+    background-color: #1e90ff;
+    color: white;
+    padding: 15px;
+    margin: 0;
+}
+
+.formulario {
+    width: 350px;
+    margin: 50px auto;
+    padding: 25px;
+    background-color: #f4f9ff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+.formulario label {
+    color: #003366;
+    font-weight: bold;
+}
+
+.campos p {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.campos input[type="text"],
+.campos input[type="password"] {
+    padding: 8px;
+    font-size: 14px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.campos button {
+    background-color: #1e90ff;
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.campos button:hover {
+    background-color: #005cbf;
+}
