@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Datos Personales</title>
+</head>
+<body>
+
+<h2>Datos Personales</h2>
+
+<form action="datos_examen.html" method="GET">
+
+    <p>
+        <label>Nombres y Apellidos:</label>
+        <input type="text" name="nombres" required>
+    </p>
+
+    <p>
+        <label>Cédula:</label>
+        <input type="text" name="cedula" required>
+    </p>
+
+    <p>
+        <label>Email:</label>
+        <input type="email" name="email" required>
+    </p>
+
+    <p>
+        <label>Fecha Nacimiento:</label>
+        <input type="date" name="fecha_nac" required>
+    </p>
+
+    <p>
+        <label>Dirección:</label>
+        <input type="text" name="direccion" required>
+    </p>
+
+    <p>
+        <label>Género:</label>
+        <select name="genero">
+            <option>Masculino</option>
+            <option>Femenino</option>
+        </select>
+    </p>
+
+    <p>
+        <label>Tipo de Sangre:</label>
+        <select name="sangre">
+            <option>O+</option>
+            <option>O-</option>
+            <option>A+</option>
+            <option>A-</option>
+        </select>
+    </p>
+
+    <input type="submit" value="Siguiente →">
+
+</form>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Muestra 3</title>
+</head>
+<body>
+
+<h2>Muestra 3</h2>
+
+<form action="resultado.html" method="GET">
+
+<script>
+const params = new URLSearchParams(window.location.search);
+for (const [key, value] of params.entries()) {
+    document.write('<input type="hidden" name="' + key + '" value="' + value + '">');
+}
+</script>
+
+<p>
+    <label>Hora de la muestra:</label>
+    <input type="time" name="hora3" required>
+</p>
+
+<p>
+    <label>Temperatura:</label>
+    <input type="text" name="temp3" required>
+</p>
+
+<p>
+    <label>Presión arterial:</label>
+    <input type="text" name="presion3" required>
+</p>
+
+<p>
+    <label>Pulso:</label>
+    <input type="text" name="pulso3" required>
+</p>
+
+<input type="submit" value="Finalizar">
+
+</form>
+
+</body>
+</html>
