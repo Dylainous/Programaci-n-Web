@@ -56,19 +56,27 @@ public class EstudiantesController : Controller
             Correo = vm.Correo,
         };
 
-        _context.Estudiantes.Add(estudiante);
-        await _context.SaveChangesAsync();
-
-        var calificacion = new Calificacion
+        try
         {
-            EstudianteId = estudiante.Id,
-            Nota1 = vm.Nota1,
-            Nota2 = vm.Nota2,
-            Nota3 = vm.Nota3,
-        };
+            _context.Estudiantes.Add(estudiante);
+            await _context.SaveChangesAsync();
 
-        _context.Calificaciones.Add(calificacion);
-        await _context.SaveChangesAsync();
+            var calificacion = new Calificacion
+            {
+                EstudianteId = estudiante.Id,
+                Nota1 = vm.Nota1,
+                Nota2 = vm.Nota2,
+                Nota3 = vm.Nota3,
+            };
+
+            _context.Calificaciones.Add(calificacion);
+            await _context.SaveChangesAsync();
+        }
+        catch (Exception ex)
+        {
+            ModelState.AddModelError("", $"Error al guardar: {ex.Message}");
+            return View(vm);
+        }
 
         TempData["Exito"] = $"Estudiante '{estudiante.Nombre}' registrado correctamente.";
         return RedirectToAction(nameof(Index));
