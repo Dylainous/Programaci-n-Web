@@ -1,0 +1,194 @@
+/* =========================
+   ESTILOS GENERALES
+========================= */
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f4f7fb;
+    margin: 0;
+    padding: 30px;
+    color: #333;
+}
+
+h1 {
+    text-align: center;
+    color: #1e3a8a;
+    margin-bottom: 25px;
+}
+
+/* =========================
+   MENSAJE DE ÉXITO
+========================= */
+
+p strong {
+    display: inline-block;
+    background: #d1fae5;
+    color: #065f46;
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: 1px solid #10b981;
+    margin-bottom: 15px;
+}
+
+/* =========================
+   BOTÓN INSERTAR
+========================= */
+
+a {
+    text-decoration: none;
+}
+
+a[href*="Insertar"] {
+    background: #2563eb;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: 0.3s ease;
+}
+
+a[href*="Insertar"]:hover {
+    background: #1d4ed8;
+}
+
+/* =========================
+   CONTENEDOR PRINCIPAL
+========================= */
+
+#app {
+    background: white;
+    padding: 25px;
+    border-radius: 14px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* =========================
+   INPUT DE BÚSQUEDA
+========================= */
+
+label {
+    font-weight: 600;
+    margin-right: 10px;
+}
+
+input[type="text"] {
+    padding: 10px;
+    width: 300px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    outline: none;
+    transition: 0.3s;
+}
+
+input[type="text"]:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 5px rgba(37, 99, 235, 0.4);
+}
+
+/* =========================
+   TABLA
+========================= */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+thead {
+    background: #1e40af;
+    color: white;
+}
+
+th, td {
+    padding: 14px 12px;
+    text-align: center;
+}
+
+th {
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.3s;
+}
+
+th:hover {
+    background: #1d4ed8;
+}
+
+tbody tr:nth-child(even) {
+    background: #f8fafc;
+}
+
+tbody tr:hover {
+    background: #dbeafe;
+    transition: 0.2s;
+}
+
+/* =========================
+   ESTADOS
+========================= */
+
+td:last-child {
+    font-weight: bold;
+}
+
+tbody tr td:last-child {
+    color: #065f46;
+}
+
+/* Reprobado */
+tbody tr td:last-child:contains("Reprobado") {
+    color: #b91c1c;
+}
+
+/* =========================
+   TOTAL ESTUDIANTES
+========================= */
+
+#app > p:last-child {
+    margin-top: 20px;
+    font-weight: bold;
+    color: #1e3a8a;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+
+    body {
+        padding: 10px;
+    }
+
+    #app {
+        padding: 15px;
+    }
+
+    input[type="text"] {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    table {
+        font-size: 14px;
+    }
+
+    th, td {
+        padding: 10px 6px;
+    }
+}
+
+.aprobado {
+    color: #15803d;
+    font-weight: bold;
+}
+
+.reprobado {
+    color: #dc2626;
+    font-weight: bold;
+}

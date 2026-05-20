@@ -1,0 +1,158 @@
+@model IEnumerable<Estudiante> 
+
+@{
+    ViewData["Title"] = "Grades";
+}
+
+<link rel="stylesheet" href="/css/StylesIndex.css" />
+
+<h1>Student Grades</h1>
+
+@if (TempData["Exito"] != null)
+{
+    <p style="color:green"><strong>@TempData["Exito"]</strong></p>
+}
+
+<p><a href="/Estudiantes/Insertar">+ Add New Student</a></p>
+
+<div id="app">
+    <div>
+        <label>Search by name or ID:</label>
+        <input v-model="busqueda" type="text" placeholder="Search..." />
+    </div>
+
+    <br />
+
+    <table border="1" cellpadding="6" cellspacing="0">
+        <thead>
+            <tr>
+                <th @@click="ordenarPor('nombre')" style="cursor:pointer">
+                    Name {{ columnaOrden === 'nombre' ? (ascendente ? '▲' : '▼') : '' }}
+                </th>
+                <th>ID</th>
+                <th>Email</th>
+                <th @@click="ordenarPor('nota1')" style="cursor:pointer">
+                    Grade 1 {{ columnaOrden === 'nota1' ? (ascendente ? '▲' : '▼') : '' }}
+                </th>
+                <th @@click="ordenarPor('nota2')" style="cursor:pointer">
+                    Grade 2 {{ columnaOrden === 'nota2' ? (ascendente ? '▲' : '▼') : '' }}
+                </th>
+                <th @@click="ordenarPor('nota3')" style="cursor:pointer">
+                    Grade 3 {{ columnaOrden === 'nota3' ? (ascendente ? '▲' : '▼') : '' }}
+                </th>
+                <th @@click="ordenarPor('promedio')" style="cursor:pointer">
+                    Average {{ columnaOrden === 'promedio' ? (ascendente ? '▲' : '▼') : '' }}
+                </th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr v-if="estudiantesFiltrados.length === 0">
+                <td colspan="8">No students found.</td>
+            </tr>
+
+            <tr v-for="e in estudiantesFiltrados" :key="e.id">
+                <td>{{ e.nombre }}</td>
+                <td>{{ e.cedula }}</td>
+                <td>{{ e.correo }}</td>
+                <td>{{ e.nota1 }}</td>
+                <td>{{ e.nota2 }}</td>
+                <td>{{ e.nota3 }}</td>
+                <td>{{ e.promedio }}</td>
+
+                <td :class="e.promedio >= 7 ? 'aprobado' : 'reprobado'">
+                    {{ e.promedio >= 7 ? 'Passed' : 'Failed' }}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p>Total students: {{ estudiantesFiltrados.length }}</p>
+</div>
+
+@section Scripts {
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+<script>
+    // Pass server-side data to Vue safely
+    const estudiantesData = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(
+        Model.Select(e => new {
+            id       = e.Id,
+            nombre   = e.Nombre,
+            cedula   = e.Cedula,
+            correo   = e.Correo,
+            nota1    = e.Calificacion != null ? e.Calificacion.Nota1 : (decimal?)null,
+            nota2    = e.Calificacion != null ? e.Calificacion.Nota2 : (decimal?)null,
+            nota3    = e.Calificacion != null ? e.Calificacion.Nota3 : (decimal?)null,
+            promedio = e.Calificacion != null ? e.Calificacion.Promedio : (decimal?)null,
+        })
+    ));
+
+    const { createApp, ref, computed } = Vue;
+
+    createApp({
+        setup() {
+
+            const busqueda      = ref('');
+            const columnaOrden  = ref('nombre');
+            const ascendente    = ref(true);
+
+            const estudiantes = ref(estudiantesData);
+
+            const estudiantesFiltrados = computed(() => {
+
+                let lista = estudiantes.value;
+
+                // Filter
+                const q = busqueda.value.toLowerCase();
+
+                if (q) {
+                    lista = lista.filter(e =>
+                        e.nombre.toLowerCase().includes(q) ||
+                        e.cedula.toLowerCase().includes(q)
+                    );
+                }
+
+                // Sort
+                lista = [...lista].sort((a, b) => {
+
+                    const col = columnaOrden.value;
+
+                    const va = a[col] ?? '';
+                    const vb = b[col] ?? '';
+
+                    if (typeof va === 'number') {
+                        return ascendente.value ? va - vb : vb - va;
+                    }
+
+                    return ascendente.value
+                        ? String(va).localeCompare(String(vb))
+                        : String(vb).localeCompare(String(va));
+                });
+
+                return lista;
+            });
+
+            function ordenarPor(col) {
+
+                if (columnaOrden.value === col) {
+                    ascendente.value = !ascendente.value;
+                } else {
+                    columnaOrden.value = col;
+                    ascendente.value = true;
+                }
+            }
+
+            return {
+                busqueda,
+                columnaOrden,
+                ascendente,
+                estudiantesFiltrados,
+                ordenarPor
+            };
+        }
+
+    }).mount('#app');
+
+</script>
+}
