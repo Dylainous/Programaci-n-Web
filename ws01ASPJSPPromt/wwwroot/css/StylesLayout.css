@@ -1,0 +1,100 @@
+/* =========================
+   RESET GENERAL
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* =========================
+   BODY
+========================= */
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f4f7fb;
+    color: #333;
+    min-height: 100vh;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+nav {
+    background: #1e3a8a;
+    padding: 16px 30px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+/* Links del menú */
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 10px 16px;
+    border-radius: 8px;
+    transition: 0.3s ease;
+}
+
+/* Hover */
+
+nav a:hover {
+    background: rgba(255,255,255,0.15);
+}
+
+/* =========================
+   LÍNEA SEPARADORA
+========================= */
+
+hr {
+    border: none;
+    height: 1px;
+    background: #dbe3ef;
+}
+
+/* =========================
+   CONTENIDO PRINCIPAL
+========================= */
+
+main {
+    padding: 30px;
+    max-width: 1300px;
+    margin: auto;
+}
+
+/* =========================
+   TITULOS
+========================= */
+
+h1, h2, h3 {
+    color: #1e3a8a;
+    margin-bottom: 20px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+
+    nav {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+
+    nav a {
+        text-align: center;
+    }
+
+    main {
+        padding: 15px;
+    }
+}
