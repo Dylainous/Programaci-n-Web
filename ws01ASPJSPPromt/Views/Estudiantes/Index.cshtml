@@ -81,10 +81,11 @@
             nombre   = e.Nombre,
             cedula   = e.Cedula,
             correo   = e.Correo,
-            nota1    = e.Calificacion != null ? e.Calificacion.Nota1 : (decimal?)null,
-            nota2    = e.Calificacion != null ? e.Calificacion.Nota2 : (decimal?)null,
-            nota3    = e.Calificacion != null ? e.Calificacion.Nota3 : (decimal?)null,
-            promedio = e.Calificacion != null ? e.Calificacion.Promedio : (decimal?)null,
+            deporte  = e.DeporteFavorito,
+            nota1    = e.Nota1,
+            nota2    = e.Nota2,
+            nota3    = e.Nota3,
+            promedio = e.Promedio,
         })
     ));
 

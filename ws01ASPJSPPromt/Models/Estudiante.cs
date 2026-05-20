@@ -26,6 +26,25 @@ public class Estudiante
     [EmailAddress]
     public string Correo { get; set; } = string.Empty;
 
-    // Navigation property
-    public Calificacion? Calificacion { get; set; }
+    [Column("deporte_favorito")]
+    [StringLength(50)]
+    public string? DeporteFavorito { get; set; }
+
+    [Required]
+    [Column("nota1")]
+    [Range(1, 10)]
+    public decimal Nota1 { get; set; }
+
+    [Required]
+    [Column("nota2")]
+    [Range(1, 10)]
+    public decimal Nota2 { get; set; }
+
+    [Required]
+    [Column("nota3")]
+    [Range(1, 10)]
+    public decimal Nota3 { get; set; }
+
+    [Column("promedio")]
+    public decimal Promedio { get; set; }
 }
