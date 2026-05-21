@@ -29,7 +29,7 @@
 
     <?php
     // Render the inner content view
-    $contentFile = __DIR__ . '/' . str_replace('.', DIRECTORY_SEPARATOR, $content) . '.php';
+    $contentFile = __DIR__ . '/' . str_replace('.', '/', $content) . '.php';
     if (file_exists($contentFile)) {
         require $contentFile;
     } else {
