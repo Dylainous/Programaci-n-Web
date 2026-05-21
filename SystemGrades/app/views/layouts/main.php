@@ -28,10 +28,8 @@
     ?>
 
     <?php
-    echo "<pre>Looking for: " . $contentFile . "</pre>";
     // Render the inner content view
-    $contentFile = __DIR__ . '/' . str_replace('.', '/', $content) . '.php';
-    echo "<pre>Looking for: " . $contentFile . "</pre>";
+    $contentFile = dirname(__DIR__) . '/' . str_replace('.', '/', $content) . '.php';
     if (file_exists($contentFile)) {
         require $contentFile;
     } else {
