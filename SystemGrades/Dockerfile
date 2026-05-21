@@ -35,11 +35,11 @@ RUN chown -R www-data:www-data /var/www/html \
 
 # ── Environment variables (set these in Render dashboard) ────
 # Render injects these at runtime; defaults here are placeholders.
-ENV DB_HOST=your-project-ref.supabase.co \
+ENV DB_HOST=db.syiqftmpmmpvjbpmqspp.supabase.co \
     DB_PORT=5432 \
     DB_NAME=postgres \
     DB_USER=postgres \
-    DB_PASS=your-database-password \
+    DB_PASS=Alexander12.Dalmatax1011 \
     DB_SCHEMA=public
 
 # ── Expose port (Render maps this automatically) ─────────────
