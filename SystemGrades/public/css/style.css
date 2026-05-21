@@ -1,0 +1,261 @@
+/* =========================================
+   SYSTEM GRADES — MODERN UI
+   Archivo: public/css/style.css
+========================================= */
+
+/* ===== GOOGLE FONT ===== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* ===== RESET ===== */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ===== BODY ===== */
+body{
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+    min-height: 100vh;
+    color: #f8fafc;
+    padding: 40px;
+}
+
+/* ===== CONTAINER ===== */
+.container{
+    width: 95%;
+    max-width: 1200px;
+    margin: auto;
+    background: rgba(255,255,255,0.06);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 22px;
+    padding: 35px;
+    box-shadow:
+        0 8px 32px rgba(0,0,0,0.35),
+        inset 0 1px 0 rgba(255,255,255,0.08);
+    animation: fadeIn 0.7s ease;
+}
+
+/* ===== TITLE ===== */
+h1{
+    text-align: center;
+    font-size: 2.3rem;
+    margin-bottom: 30px;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 1px;
+}
+
+/* ===== BUTTONS ===== */
+a.button,
+button{
+    display: inline-block;
+    padding: 12px 22px;
+    border-radius: 12px;
+    border: none;
+    text-decoration: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    color: white;
+    box-shadow: 0 5px 15px rgba(37,99,235,0.35);
+}
+
+a.button:hover,
+button:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(37,99,235,0.45);
+}
+
+/* ===== TABLE ===== */
+table{
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 25px;
+    overflow: hidden;
+    border-radius: 18px;
+    background: rgba(255,255,255,0.04);
+}
+
+thead{
+    background: rgba(59,130,246,0.25);
+}
+
+thead th{
+    padding: 18px;
+    text-align: left;
+    color: #ffffff;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+}
+
+tbody tr{
+    transition: all 0.2s ease;
+}
+
+tbody tr:hover{
+    background: rgba(255,255,255,0.07);
+    transform: scale(1.005);
+}
+
+tbody td{
+    padding: 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    color: #e2e8f0;
+}
+
+/* ===== FORM ===== */
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-top: 25px;
+}
+
+/* ===== INPUTS ===== */
+input,
+select{
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: 14px;
+    border: 1px solid rgba(255,255,255,0.12);
+    background: rgba(255,255,255,0.06);
+    color: white;
+    outline: none;
+    transition: all 0.25s ease;
+    font-size: 1rem;
+}
+
+input::placeholder{
+    color: rgba(255,255,255,0.55);
+}
+
+input:focus,
+select:focus{
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 4px rgba(59,130,246,0.25);
+    background: rgba(255,255,255,0.09);
+}
+
+/* ===== LABELS ===== */
+label{
+    font-weight: 500;
+    margin-bottom: 5px;
+    color: #f1f5f9;
+}
+
+/* ===== ACTION BUTTONS ===== */
+.actions{
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+/* ===== EDIT BUTTON ===== */
+.edit-btn{
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+}
+
+.edit-btn:hover{
+    box-shadow: 0 10px 20px rgba(245,158,11,0.35);
+}
+
+/* ===== DELETE BUTTON ===== */
+.delete-btn{
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+}
+
+.delete-btn:hover{
+    box-shadow: 0 10px 20px rgba(239,68,68,0.35);
+}
+
+/* ===== SUCCESS MESSAGE ===== */
+.success{
+    padding: 15px;
+    border-radius: 12px;
+    background: rgba(34,197,94,0.15);
+    border: 1px solid rgba(34,197,94,0.35);
+    color: #86efac;
+    margin-bottom: 20px;
+}
+
+/* ===== ERROR MESSAGE ===== */
+.error{
+    padding: 15px;
+    border-radius: 12px;
+    background: rgba(239,68,68,0.15);
+    border: 1px solid rgba(239,68,68,0.35);
+    color: #fca5a5;
+    margin-bottom: 20px;
+}
+
+/* ===== CARD EFFECT ===== */
+.card{
+    background: rgba(255,255,255,0.05);
+    border-radius: 18px;
+    padding: 25px;
+    margin-bottom: 20px;
+    transition: all 0.25s ease;
+}
+
+.card:hover{
+    transform: translateY(-4px);
+    background: rgba(255,255,255,0.07);
+}
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar{
+    width: 10px;
+}
+
+::-webkit-scrollbar-track{
+    background: #0f172a;
+}
+
+::-webkit-scrollbar-thumb{
+    background: #3b82f6;
+    border-radius: 10px;
+}
+
+/* ===== ANIMATION ===== */
+@keyframes fadeIn{
+    from{
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width: 768px){
+
+    body{
+        padding: 20px;
+    }
+
+    .container{
+        padding: 20px;
+    }
+
+    h1{
+        font-size: 1.8rem;
+    }
+
+    table{
+        display: block;
+        overflow-x: auto;
+    }
+
+    a.button,
+    button{
+        width: 100%;
+        text-align: center;
+    }
+}
