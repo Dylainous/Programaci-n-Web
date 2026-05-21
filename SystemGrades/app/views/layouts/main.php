@@ -28,6 +28,7 @@
     ?>
 
     <?php
+    echo "<pre>Looking for: " . $contentFile . "</pre>";
     // Render the inner content view
     $contentFile = __DIR__ . '/' . str_replace('.', '/', $content) . '.php';
     echo "<pre>Looking for: " . $contentFile . "</pre>";
