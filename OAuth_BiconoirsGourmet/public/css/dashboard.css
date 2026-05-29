@@ -1,7 +1,0 @@
-body {
-    font-family: 'Outfit', sans-serif;
-}
-
-.custom-scrollbar::-webkit-scrollbar { width: 4px; }
-.custom-scrollbar::-webkit-scrollbar-thumb { background: #1a4731; border-radius: 10px; }
-

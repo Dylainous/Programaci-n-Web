@@ -1,6 +1,6 @@
 {
-    "name": "biconoir/restaurant",
-    "description": "Prototipo Gourmet Biconoir",
+    "name": "biconoir/oauth-simple",
+    "description": "Biconoir OAuth Demo - Solo autenticación con Google",
     "type": "project",
     "require": {
         "php": ">=8.0",

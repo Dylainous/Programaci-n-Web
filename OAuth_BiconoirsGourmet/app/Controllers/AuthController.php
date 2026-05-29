@@ -6,14 +6,21 @@ use App\Models\User;
 class AuthController {
 
     // ─────────────────────────────────────────────────────────────────────────
-    // VISTA: Login / Sign Up
+    // VISTA: Login
     // Muestra la página con el botón "Continuar con Google".
-    // Si ya hay sesión activa, redirige al menú directamente.
+    // Si ya hay sesión activa (y no expiró), redirige al menú directamente.
     // ─────────────────────────────────────────────────────────────────────────
     public function login() {
-        if (isset($_SESSION['user'])) {
+        // Si ya hay sesión válida, redirigir al menú
+        if (isset($_SESSION['user']) && !$this->isSessionExpired()) {
             header('Location: index.php?action=menu');
             exit();
+        }
+        // Si la sesión expiró, limpiarla
+        if (isset($_SESSION['user']) && $this->isSessionExpired()) {
+            session_destroy();
+            session_start();
+            $_SESSION['oauth_error'] = 'Tu sesión expiró. Por favor inicia sesión nuevamente.';
         }
         require_once __DIR__ . '/../Views/login.php';
     }
@@ -81,29 +88,65 @@ class AuthController {
         // ── Back End: Buscar o crear el usuario en nuestra base de datos ──────
         $user = User::findOrCreateFromGoogle($googleUser);
 
-        // ── Crear la sesión del usuario ───────────────────────────────────────
-        $_SESSION['user'] = $user;
+        // ── Crear la sesión del usuario con timestamp de inicio ───────────────
+        $_SESSION['user']       = $user;
+        $_SESSION['login_time'] = time(); // Marca de tiempo para el contador
 
-        // Redirigir al menú (o a la página que intentaba acceder)
-        $redirect = $_SESSION['intended_url'] ?? 'index.php?action=menu';
-        unset($_SESSION['intended_url']);
-
-        header('Location: ' . $redirect);
+        // Redirigir al menú
+        header('Location: index.php?action=menu');
         exit();
     }
 
     // ─────────────────────────────────────────────────────────────────────────
-    // LOGOUT: Destruye la sesión y redirige al login.
+    // LOGOUT: Destruye la sesión y redirige a pantalla de confirmación.
     // ─────────────────────────────────────────────────────────────────────────
     public function logout() {
+        $manual = isset($_GET['manual']) && $_GET['manual'] === '1';
         session_destroy();
-        header('Location: index.php?action=login');
+        if ($manual) {
+            // Logout manual → mostrar pantalla de confirmación
+            session_start();
+            $_SESSION['logout_success'] = true;
+            header('Location: index.php?action=logout_confirm');
+        } else {
+            // Expiración automática → mostrar redirect notice
+            header('Location: index.php?action=redirect_notice&from=expired');
+        }
+        exit();
+    }
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // VERIFICAR EXPIRACIÓN: Comprueba si la sesión ha superado SESSION_LIFETIME
+    // ─────────────────────────────────────────────────────────────────────────
+    public function checkSessionExpiry() {
+        if (isset($_SESSION['user']) && isset($_SESSION['login_time'])) {
+            $elapsed = time() - $_SESSION['login_time'];
+            if ($elapsed >= SESSION_LIFETIME) {
+                // Sesión expirada → destruir y responder con JSON para el JS
+                session_destroy();
+                header('Content-Type: application/json');
+                echo json_encode(['expired' => true]);
+                exit();
+            }
+            // Devolver tiempo restante al cliente
+            $remaining = SESSION_LIFETIME - $elapsed;
+            header('Content-Type: application/json');
+            echo json_encode(['expired' => false, 'remaining' => $remaining]);
+            exit();
+        }
+        header('Content-Type: application/json');
+        echo json_encode(['expired' => true]);
         exit();
     }
 
     // ─────────────────────────────────────────────────────────────────────────
     // MÉTODOS PRIVADOS DE APOYO
     // ─────────────────────────────────────────────────────────────────────────
+
+    private function isSessionExpired(): bool {
+        if (!isset($_SESSION['login_time'])) return true;
+        return (time() - $_SESSION['login_time']) >= SESSION_LIFETIME;
+    }
 
     /**
      * Hace la petición POST a Google para intercambiar el código de autorización

@@ -10,20 +10,12 @@ class User extends Model {
     protected $keyType = 'string';
     public $timestamps = false;
 
-    // ─── NOTA: password_hash eliminado. Google OAuth maneja la autenticación.
-    // Solo almacenamos datos personales del usuario.
     protected $fillable = [
         'user_id',   // = Google "sub" (ID único e inmutable del usuario en Google)
         'name',
         'email',
-        'phone',
-        'birthdate',
         'role'
     ];
-
-    public static function getAll() {
-        return self::all()->toArray();
-    }
 
     /**
      * Busca un usuario por su Google ID (sub).
