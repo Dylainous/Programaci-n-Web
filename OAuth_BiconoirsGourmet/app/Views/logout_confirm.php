@@ -19,15 +19,15 @@ unset($_SESSION['logout_success']);
 
         <!-- Título -->
         <h2 class="text-3xl font-bold text-gray-800 uppercase tracking-tighter mb-4">
-            Sesión Cerrada
+            Session Closed
         </h2>
 
         <!-- Mensaje -->
         <p class="text-gray-500 text-base leading-relaxed mb-2">
-            Has cerrado sesión correctamente en <span class="font-bold text-[#1a4731]">Biconoir's Restaurant</span>.
+            You have successfully signed out of <span class="font-bold text-[#1a4731]">Biconoir's Restaurant</span>.
         </p>
         <p class="text-gray-400 text-sm italic mb-10">
-            Gracias por visitarnos. Esperamos verte pronto.
+            Thank you for visiting us. We hope to see you again soon.
         </p>
 
         <!-- Badge de confirmación -->
@@ -35,7 +35,7 @@ unset($_SESSION['logout_success']);
             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
             </svg>
-            Cierre de sesión verificado
+            Session logout verified
         </div>
 
         <!-- Botón volver al login -->
@@ -48,12 +48,12 @@ unset($_SESSION['logout_success']);
                 <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#fff"/>
                 <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#fff"/>
             </svg>
-            Volver a iniciar sesión
+            Sign in again
         </a>
 
         <!-- Nota de seguridad -->
         <p class="text-xs text-gray-300 mt-8">
-            Tu sesión ha sido eliminada de forma segura del servidor.
+            Your session has been securely removed from the server.
         </p>
 
     </div>

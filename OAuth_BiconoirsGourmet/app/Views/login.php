@@ -11,8 +11,8 @@
             <div class="flex justify-center mb-6">
                 <img src="img/logoRestaurantGreen.png" alt="Biconoir" class="h-16 w-auto" style="filter: none;">
             </div>
-            <h2 class="text-3xl font-bold text-gray-800 uppercase tracking-tighter">Bienvenido</h2>
-            <p class="text-gray-400 text-sm mt-2 italic">Accede a tu cuenta gourmet con Google.</p>
+            <h2 class="text-3xl font-bold text-gray-800 uppercase tracking-tighter">Welcome</h2>
+            <p class="text-gray-400 text-sm mt-2 italic">Access your gourmet account with Google.</p>
         </div>
 
         <!-- Mensaje de error OAuth (si hubo alguno) -->
@@ -26,7 +26,7 @@
         <!-- Separador -->
         <div class="flex items-center gap-4 mb-8">
             <div class="flex-1 h-px bg-gray-200"></div>
-            <span class="text-xs text-gray-400 font-bold uppercase tracking-widest">Continúa con</span>
+            <span class="text-xs text-gray-400 font-bold uppercase tracking-widest">Continue with</span>
             <div class="flex-1 h-px bg-gray-200"></div>
         </div>
 
@@ -51,14 +51,14 @@
             </svg>
 
             <span class="text-base group-hover:text-[#1a4731] transition-colors">
-                Continuar con Google
+                Continue with Google
             </span>
         </a>
 
         <!-- Aviso informativo -->
         <p class="text-center text-xs text-gray-400 mt-8 leading-relaxed">
-            Al continuar, aceptas que Biconoir almacene tu nombre y correo<br>
-            para gestionar tu cuenta. No guardamos contraseñas.
+            By continuing, you agree that Biconoir stores your name and email<br>
+            to manage your account. We do not store passwords.
         </p>
 
         <!-- Badge OAuth -->
@@ -66,7 +66,7 @@
             <svg class="w-4 h-4 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
             </svg>
-            <span class="text-xs text-gray-400 font-medium">Autenticación segura con OAuth 2.0</span>
+            <span class="text-xs text-gray-400 font-medium">Secure authentication with OAuth 2.0</span>
         </div>
     </div>
 </section>

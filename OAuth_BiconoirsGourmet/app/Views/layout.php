@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,7 +25,7 @@
                 <!-- Contador de sesión -->
                 <div id="session-timer-container" class="flex items-center gap-3 bg-black/20 px-4 py-2 rounded-full border border-white/10">
                     <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
-                    <span class="text-xs font-bold uppercase tracking-widest text-green-300">Sesión:</span>
+                    <span class="text-xs font-bold uppercase tracking-widest text-green-300">Session:</span>
                     <span id="session-timer" class="font-bold text-white tabular-nums text-sm">--:--</span>
                 </div>
 
@@ -40,13 +40,13 @@
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
                     </svg>
-                    Cerrar Sesión
+                    Sign Out
                 </a>
             </nav>
             <?php else: ?>
             <a href="index.php?action=login"
                class="bg-white text-[#1a4731] px-6 py-2 rounded-full text-sm font-bold shadow-lg hover:bg-gray-100 transition-all">
-                Entrar
+                Sign In
             </a>
             <?php endif; ?>
         </div>
@@ -59,7 +59,7 @@
     <footer class="bg-gray-900 text-gray-500 py-10 text-center text-xs">
         <div class="container mx-auto px-6">
             <p class="mb-2 uppercase tracking-widest font-bold">&copy; 2026 Biconoir's Restaurant</p>
-            <p class="italic">La excelencia en cada detalle culinario.</p>
+            <p class="italic">Excellence in every culinary detail.</p>
         </div>
     </footer>
 
