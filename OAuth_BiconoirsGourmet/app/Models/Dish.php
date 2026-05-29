@@ -4,17 +4,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 class Dish extends Model {
-    protected $table = 'dishes';
-    protected $primaryKey = 'dish_id';
+    protected $table = 'menu_items';
+    protected $primaryKey = 'item_id';
     public $incrementing = false;
     protected $keyType = 'string';
     public $timestamps = false;
 
     protected $fillable = [
-        'dish_id', 'name', 'description', 'price', 'category', 'image', 'available'
+        'item_id', 'name', 'description', 'price', 'category', 'image_url', 'is_available'
     ];
 
     public static function getAllAvailable(): array {
-        return self::where('available', true)->get()->toArray();
+        return self::where('is_available', true)->get()->toArray();
     }
 }

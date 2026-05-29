@@ -35,7 +35,7 @@
         <?php foreach ($dishes as $dish): ?>
             <div class="bg-white rounded-[3rem] overflow-hidden shadow-xl border border-gray-100 hover:shadow-2xl transition-all duration-500 flex flex-col group relative">
                 <div class="h-64 overflow-hidden relative">
-                    <img src="<?php echo htmlspecialchars($dish['image']); ?>"
+                    <img src="<?php echo htmlspecialchars($dish['image_url']); ?>"
                          alt="<?php echo htmlspecialchars($dish['name']); ?>"
                          class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                     <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-all"></div>
