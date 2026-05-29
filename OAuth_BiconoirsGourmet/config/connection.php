@@ -6,7 +6,7 @@ $capsule = new Capsule;
 
 $capsule->addConnection([
     'driver'   => 'pgsql',
-    'url'      => getenv('DATABASE_URL') ?: 'postgresql://postgres:password@localhost:5432/biconoir_oauth',
+    'url'      => getenv('DATABASE_URL') ?: 'postgresql://postgres.syiqftmpmmpvjbpmqspp:Alexander12.Dalmatax1011@aws-1-us-east-2.pooler.supabase.com:6543/postgres',
     'charset'  => 'utf8',
     'prefix'   => '',
     'sslmode'  => 'require',
