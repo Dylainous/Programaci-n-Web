@@ -1,58 +1,79 @@
 <?php
 namespace App\Controllers;
 
+use App\Models\Dish;
+use App\Models\OrderDetail;
+
 class CartController {
 
-    /**
-     * Muestra el carrito.
-     * GUARD: Requiere sesión activa. Si no hay sesión, redirige a la
-     * página de aviso con la URL de origen para que el usuario sepa
-     * por qué fue redirigido.
-     */
     public function index() {
+        // GUARD: Requiere sesión activa
         if (!isset($_SESSION['user'])) {
-            // Guardamos la URL que el usuario intentaba acceder
             $_SESSION['intended_url'] = 'index.php?action=cart';
             header('Location: index.php?action=redirect_notice&from=cart');
             exit();
         }
-
         $cart = $_SESSION['cart'] ?? [];
         require_once __DIR__ . '/../Views/cart.php';
     }
 
     public function add() {
+        // GUARD: Requiere sesión activa
         if (!isset($_SESSION['user'])) {
             $_SESSION['intended_url'] = 'index.php?action=cart';
             header('Location: index.php?action=redirect_notice&from=cart');
             exit();
         }
 
-        $dishId   = $_POST['dish_id']   ?? null;
-        $dishName = $_POST['dish_name'] ?? '';
-        $price    = $_POST['price']     ?? 0;
-        $quantity = (int)($_POST['quantity'] ?? 1);
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            try {
+                $id       = $_POST['id'];
+                $quantity = isset($_POST['quantity']) ? (int)$_POST['quantity'] : 1;
 
-        if ($dishId) {
-            if (isset($_SESSION['cart'][$dishId])) {
-                $_SESSION['cart'][$dishId]['quantity'] += $quantity;
-            } else {
-                $_SESSION['cart'][$dishId] = [
-                    'name'     => $dishName,
-                    'price'    => (float)$price,
-                    'quantity' => $quantity
-                ];
+                $dish = Dish::where('item_id', $id)->first();
+
+                if ($dish) {
+                    if (!isset($_SESSION['cart'])) {
+                        $_SESSION['cart'] = [];
+                    }
+
+                    $newQuantity = isset($_SESSION['cart'][$id])
+                        ? $_SESSION['cart'][$id]['quantity'] + $quantity
+                        : $quantity;
+
+                    $tempDetail = new OrderDetail([
+                        'item_id'       => $dish->item_id,
+                        'quantity'      => $newQuantity,
+                        'selling_price' => (float)$dish->price
+                    ]);
+                    $tempDetail->setRelation('menuItem', $dish);
+
+                    $_SESSION['cart'][$id] = [
+                        'item_id'          => $dish->item_id,
+                        'name'             => $dish->name,
+                        'quantity'         => $newQuantity,
+                        'price'            => (float)$dish->price,
+                        'selling_price'    => (float)$dish->price,
+                        'ingredient_cost'  => $tempDetail->calculateItemCost(),
+                        'ingredients'      => $dish->ingredients->pluck('name')->toArray(),
+                        'image_url'        => $dish->image_url
+                    ];
+                }
+            } catch (\Exception $e) {
+                echo "<script>alert('Error en la base de datos: " . $e->getMessage() . "'); window.location.href='index.php?action=menu';</script>";
+                exit();
             }
         }
-
-        header('Location: index.php?action=cart');
+        header('Location: index.php?action=menu');
         exit();
     }
 
     public function remove() {
-        $dishId = $_GET['id'] ?? null;
-        if ($dishId && isset($_SESSION['cart'][$dishId])) {
-            unset($_SESSION['cart'][$dishId]);
+        if (isset($_GET['id'])) {
+            $id = $_GET['id'];
+            if (isset($_SESSION['cart'][$id])) {
+                unset($_SESSION['cart'][$id]);
+            }
         }
         header('Location: index.php?action=cart');
         exit();
