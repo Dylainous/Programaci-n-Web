@@ -10,7 +10,7 @@
                 </svg>
             </div>
             <div>
-                <p class="text-xs text-gray-400 font-bold uppercase tracking-widest">Sesión activa</p>
+                <p class="text-xs text-gray-400 font-bold uppercase tracking-widest">Active Session</p>
                 <p class="text-sm font-bold text-[#1a4731]"><?php echo htmlspecialchars($_SESSION['user']['email']); ?></p>
             </div>
         </div>
@@ -18,7 +18,7 @@
             <svg class="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
-            <span class="text-xs text-gray-500 font-medium">Tiempo restante:</span>
+            <span class="text-xs text-gray-500 font-medium">Remaining time:</span>
             <span id="banner-time" class="text-sm font-bold text-[#1a4731] tabular-nums">--:--</span>
         </div>
     </div>
@@ -26,8 +26,8 @@
 
 <section class="py-20 container mx-auto px-6">
     <div class="text-center mb-16">
-        <h2 class="text-6xl font-bold text-gray-800 mb-4 tracking-tighter uppercase">Nuestra Carta</h2>
-        <p class="text-gray-400 italic text-lg">Descubre la excelencia en cada plato.</p>
+        <h2 class="text-6xl font-bold text-gray-800 mb-4 tracking-tighter uppercase">Our Menu</h2>
+        <p class="text-gray-400 italic text-lg">Discover excellence in every dish.</p>
         <div class="h-1.5 w-24 bg-[#1a4731] mx-auto mt-6 rounded-full"></div>
     </div>
 
@@ -60,7 +60,7 @@
                     <!-- Línea separadora al pie -->
                     <div class="mt-6 pt-6 border-t border-gray-100 flex items-center justify-between">
                         <span class="text-2xl font-bold text-[#1a4731]">$<?php echo number_format($dish['price'], 2); ?></span>
-                        <span class="text-xs text-gray-400 font-medium uppercase tracking-widest">Disponible</span>
+                        <span class="text-xs text-gray-400 font-medium uppercase tracking-widest">Available</span>
                     </div>
                 </div>
             </div>
@@ -70,7 +70,7 @@
     <?php if (empty($dishes)): ?>
     <div class="text-center py-20 text-gray-400">
         <div class="text-6xl mb-4">🍽️</div>
-        <p class="text-xl font-bold">No hay platos disponibles en este momento.</p>
+        <p class="text-xl font-bold">There are no dishes available at the moment.</p>
     </div>
     <?php endif; ?>
 </section>
