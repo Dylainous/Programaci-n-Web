@@ -1,0 +1,21 @@
+{
+  "name": "customer-store-api",
+  "version": "1.0.0",
+  "description": "Edison's Computer Store – Customer Dashboard with REST API",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "Dylan Alvarado",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "express": "^5.2.1",
+    "mongoose": "^9.6.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
