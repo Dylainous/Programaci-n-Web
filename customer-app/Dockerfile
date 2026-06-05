@@ -5,7 +5,7 @@ WORKDIR /app
 
 # Copy dependency manifests and install production deps only
 COPY package*.json ./
-RUN npm ci --omit=dev
+RUN npm install --omit=dev
 
 # ── Production image ───────────────────────────────────────────────────────────
 FROM node:20-alpine
