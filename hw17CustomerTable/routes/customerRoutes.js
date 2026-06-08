@@ -146,9 +146,23 @@ router.post("/customers", async (req, res) => {
 // ── PUT /customers/:id ────────────────────────────────────────────────────────
 // Updates an existing customer by their custom numeric id field.
 router.put("/customers/:id", async (req, res) => {
+  const paramId = Number(req.params.id);
+  const bodyId = req.body.id != null ? Number(req.body.id) : null;
+
   try {
+    // VALIDACIÓN: Si intentan cambiar el ID en el body, verificar que no choque con otro cliente
+    if (bodyId !== null && bodyId !== paramId) {
+      const idConflict = await Customer.findOne({ id: bodyId }).lean();
+      if (idConflict) {
+        return res.status(409).json({
+          status: 409,
+          message: `Conflict: El ID ${bodyId} ya pertenece a otro cliente. No se puede duplicar.`
+        });
+      }
+    }
+
     const doc = await Customer.findOneAndUpdate(
-      { id: req.params.id },
+      { id: paramId },
       { $set: req.body },
       { new: true, runValidators: true }
     ).lean();
