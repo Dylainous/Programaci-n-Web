@@ -156,7 +156,7 @@ router.put("/customers/:id", async (req, res) => {
       if (idConflict) {
         return res.status(409).json({
           status: 409,
-          message: `Conflict: El ID ${bodyId} ya pertenece a otro cliente. No se puede duplicar.`
+          message: `Conflict: The ID ${bodyId} already belongs to another client. It cannot be duplicated.`
         });
       }
     }
