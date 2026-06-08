@@ -1,31 +1,31 @@
-const port = process.env.PORT || 3000;
+const port    = process.env.PORT || 3000;
 const express = require("express");
 const mongoose = require("mongoose");
-const path = require("path");
+const path    = require("path");
 
 const app = express();
 
-const MONGO_URI =
-  process.env.MONGO_URI ||
-  "mongodb+srv://oop:oop@cluster0.9knxc.mongodb.net/oop?appName=Cluster0";
+// Hardcoded connection string — no environment variable needed.
+const MONGO_URI = "mongodb+srv://oop:oop@cluster0.9knxc.mongodb.net/oop?appName=Cluster0";
 
 mongoose.connect(MONGO_URI);
 
 const db = mongoose.connection;
-db.on("error", (error) => console.error("MongoDB error:", error));
-db.once("open", () => console.log("Connected to MongoDB Database"));
+db.on("error",  (error) => console.error("MongoDB error:", error));
+db.once("open", ()      => console.log("Connected to MongoDB Database"));
 
 app.use(express.json());
-
 app.use(express.static(path.join(__dirname, "public")));
 
 const customerRouter = require("./routes/customerRoutes");
 app.use("/computerstore", customerRouter);
 
+// Catch-all: return the SPA for any unmatched route.
 app.get("/{*path}", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
-app.listen(port, () =>
-  console.log(`Edison's Computer Store server running on port ${port}`)
+// Bind to 0.0.0.0 so AWS (EC2 / Elastic Beanstalk) can expose the port.
+app.listen(port, "0.0.0.0", () =>
+  console.log(`Edison's Computer Store running on port ${port}`)
 );
