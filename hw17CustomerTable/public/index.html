@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Edison's Computer Store — Customers</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header>
+    <div class="logo">🖥️</div>
+    <div>
+      <h1>Edison's Computer Store</h1>
+      <p>Customer Management Dashboard</p>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Lookup by ID -->
+    <div class="lookup-bar">
+      <input
+        type="text"
+        id="lookupInput"
+        placeholder="Enter a customer ID…"
+      />
+      <button onclick="lookupById()">Search by ID</button>
+      <div id="lookupResult" style="display:none;"></div>
+    </div>
+
+    <!-- Controls -->
+    <div class="controls">
+      <div class="search-wrapper">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+             stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="Search by name, ID or age…"
+          oninput="filterTable()"
+        />
+      </div>
+      <div class="count-badge" id="countBadge">Loading…</div>
+    </div>
+
+    <!-- Table card -->
+    <div class="table-card">
+      <div id="statusMsg">⏳ Loading customers…</div>
+
+      <table id="customerTable" style="display:none;">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Money Spent ($)</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+      </table>
+
+      <div id="noResults">🔍 No customers match your search.</div>
+
+      <div class="total-bar" id="totalBar" style="display:none;">
+        <span>Grand Total — all customers</span>
+        <span class="total-amount" id="grandTotal">$0.00</span>
+      </div>
+    </div>
+
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
