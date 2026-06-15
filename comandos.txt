@@ -1,0 +1,55 @@
+npm install
+scp -i "Claves.pem" ".zip" ubuntu@3.20.237.141:~
+ssh -i "Claves.pem" ubuntu@3.20.237.141 
+npm run dev  
+npm run start:dev
+sudo apt update
+sudo apt install nodejs npm -y
+sudo apt install nginx unzip -y
+
+Instala PM2 globalmente: sudo npm install -g pm2
+Arranca tu aplicación: pm2 start index.js --name "computerstore"
+pm2 stop computerstore
+pm2 delete computerstore
+cd ~
+rm -rf 
+
+
+# ── Supabase PostgreSQL ────────────────────────────────────────────────────
+# Obtén estos valores desde: Supabase Dashboard → Project Settings → Database
+#
+# Connection string format (Transaction pooler - port 6543):
+#   postgresql://postgres.[ref]:[password]@aws-0-[region].pooler.supabase.com:6543/postgres
+
+DB_HOST=aws-1-us-east-2.pooler.supabase.com
+DB_PORT=6543
+DB_NAME=postgres
+DB_USER=postgres.syiqftmpmmpvjbpmqspp
+DB_PASSWORD=Alexander12.Dalmatax1011
+
+# ── Servidor ───────────────────────────────────────────────────────────────
+PORT=3000
+
+{
+  "name": "storemovies",
+  "version": "1.0.0",
+  "description": "Movies Management REST API - Node.js + Express + Supabase PostgreSQL",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Dylan Alvarado",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^5.2.1",
+    "pg": "^8.13.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
